@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine? ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Quicksand',sans-serif;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: radial-gradient(circle at top, #ff9a9e, #fad0c4);
+  overflow:hidden;
+}
+
+.container{
+  text-align:center;
+  background:white;
+  padding:50px 40px;
+  border-radius:25px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+  max-width:400px;
+  width:90%;
+  position:relative;
+  transition:0.5s;
+}
+
+h1{
+  font-size:28px;
+  margin-bottom:30px;
+  color:#ff4d6d;
+}
+
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+}
+
+button{
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.yes{
+  background:#ff4d6d;
+  color:white;
+}
+
+.yes:hover{
+  transform:scale(1.1);
+}
+
+.no{
+  background:#eee;
+  position:relative;
+}
+
+.message{
+  margin-top:20px;
+  font-size:18px;
+  color:#ff4d6d;
+  display:none;
+  animation:fade 1s ease forwards;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* Floating hearts */
+.heart{
+  position:absolute;
+  font-size:20px;
+  animation:float 6s linear infinite;
+  opacity:0.7;
+}
+
+@keyframes float{
+  0%{ transform:translateY(100vh); opacity:1; }
+  100%{ transform:translateY(-10vh); opacity:0; }
+}
+</style>
+</head>
+<body>
+
+<div class="container" id="box">
+  <h1>Will you be my Valentine? ❤️</h1>
+  <div class="buttons">
+    <button class="yes" onclick="sayYes()">Yes 💖</button>
+    <button class="no" id="noBtn">No 😢</button>
+  </div>
+  <div class="message" id="message">
+    You just made me the happiest person alive! 💕  
+    I love you so much ❤️
+  </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * (window.innerWidth - noBtn.clientWidth);
+  const y = Math.random() * (window.innerHeight - noBtn.clientHeight);
+  noBtn.style.position = "absolute";
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+});
+
+function sayYes(){
+  document.getElementById("message").style.display = "block";
+  document.querySelector(".buttons").style.display = "none";
+  document.querySelector("h1").innerText = "Yaaay!! 💖";
+}
+
+/* Floating hearts */
+for(let i=0;i<20;i++){
+  let heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.animationDuration = (4 + Math.random()*3) + "s";
+  document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
